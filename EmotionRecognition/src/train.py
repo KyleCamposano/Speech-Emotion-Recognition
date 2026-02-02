@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import joblib
 import numpy as np
@@ -7,7 +9,6 @@ from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import classification_report, accuracy_score
 from sklearn.svm import SVC
-from __future__ import annotations
 from pathlib import Path
 
 # loads extracted acoustic features (from CSV) & returns X (feature matrix), Y (emotion labels)
@@ -96,7 +97,7 @@ def main() -> None:
 
     args.model_out.parent.mkdir(parents=True, exist_ok=True)
     joblib.dump(model, args.model_out)
-    print(f"Saved model -> {args.model_out}")
+    print(f"Saved model in {args.model_out}")
 
 
 if __name__ == "__main__":

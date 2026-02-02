@@ -24,7 +24,7 @@ def main():
         X, y, test_size=0.2, random_state=42, stratify=y
     )
 
-    # pipeline: scale features -> SVM classifier
+    # pipeline: scale features into SVM classifier
     model = Pipeline([
         ("scaler", StandardScaler()),
         ("svm", SVC(kernel="rbf", C=10, gamma="scale"))
