@@ -1,7 +1,7 @@
-from pathlib import Path
 import csv
 import numpy as np
 import librosa
+from pathlib import Path
 
 # project files path
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,7 +17,7 @@ def extract_features(wav_path: str) -> np.ndarray:
     # loads audio
     y, sr = librosa.load(wav_path, sr=SR, mono=True)
 
-    # computers MFCC
+    # computes MFCC
     mfcc = librosa.feature.mfcc(y=y, sr=sr, n_mfcc=N_MFCC)
     mfcc_mean = np.mean(mfcc, axis=1)
     mfcc_std = np.std(mfcc, axis=1)
@@ -64,7 +64,7 @@ def main():
 
             try:
                 feats = extract_features(wav_path)
-                writer.writerow(list(feats) + [label, wav_path])
+                writer.writerow(list(feats) + [label, str(wav_path.relative_to(ROOT))])
                 rows_written += 1
 
                 # progress update [DEBUGGING]
