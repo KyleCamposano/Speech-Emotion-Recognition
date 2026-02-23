@@ -11,6 +11,11 @@ from sklearn.metrics import classification_report, accuracy_score
 from sklearn.svm import SVC
 from pathlib import Path
 
+# TODO: Don't forget to change the seed and file paths/names if you want to go back and re-create the original model
+
+# Used the path function here because for whatever reason the relative path wasn't expanding properly
+ROOT = Path(__file__).resolve().parents[1]
+
 # loads extracted acoustic features (from CSV) & returns X (feature matrix), Y (emotion labels)
 def load_dataset(features_csv: Path):
     df = pd.read_csv(features_csv)
@@ -42,13 +47,14 @@ def parse_args() -> argparse.Namespace:
     p.add_argument(
         "--features",
         type=Path,
-        default=Path("results/features.csv"),
+        default=ROOT / "results" / "combined_training_features.csv",
         help="Path to extracted feature CSV"
     )
     p.add_argument(
         "--model-out",
         type=Path,
-        default=Path("results/model.joblib"),
+        # Changed the name of the model output for the second model
+        default=ROOT / "results" / "mixed_model.joblib",
         help="Output path for trained model"
     )
     p.add_argument(
@@ -57,10 +63,11 @@ def parse_args() -> argparse.Namespace:
         default=0.2,
         help="Fraction of data reserved for testing"
     )
+    # Using 17 as seed for reproducibility here to be consistent with the combined training dataset
     p.add_argument(
         "--seed",
         type=int,
-        default=42,
+        default=17,
         help="Random seed for reproducibility"
     )
     return p.parse_args()
