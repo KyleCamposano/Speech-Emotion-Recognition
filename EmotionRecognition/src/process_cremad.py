@@ -6,15 +6,15 @@ from pathlib import Path
 # project files path
 ROOT = Path(__file__).resolve().parents[1]
 
-# TODO: Adjust this path to where your CREMA-D AudioWAV folder is located
+# TODO: Adjust this path to where your CREMA-D AudioWAV folder is located if trying to re-create model
 CREMA_DIR = ROOT / "data" / "AudioWAV"
 OUT_CSV = ROOT / "results" / "cremad_features.csv"
 
-# audio processing parameters (Exactly matching your model)
+# audio processing parameters (Exactly matching original model)
 SR = 16000
 N_MFCC = 13
 
-# maps CREMA-D emotion codes to your target labels
+# maps CREMA-D emotion codes to target labels
 EMO_MAP = {
     "NEU": "neutral",
     "HAP": "happy",
