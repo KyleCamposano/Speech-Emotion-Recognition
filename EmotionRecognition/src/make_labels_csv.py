@@ -45,7 +45,7 @@ def main():
         writer.writerow(["filepath", "emotion"])
         writer.writerows(rows)
 
-    print(f"Saved {len(rows)} rows to {OUT_CSV}")
+    print(f"\nSaved {len(rows)} rows to {OUT_CSV.relative_to(ROOT)}")
 
     # displays class distribution [DEBUGGING]
     counts = {}

@@ -99,6 +99,5 @@ def main() -> None:
     joblib.dump(model, args.model_out)
     print(f"Saved model in {args.model_out}")
 
-
 if __name__ == "__main__":
     main()

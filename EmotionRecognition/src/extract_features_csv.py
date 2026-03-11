@@ -75,7 +75,8 @@ def main():
             except Exception as e:
                 print(f"Skipping {wav_path} due to error: {e}")
 
-    print(f"Done. Wrote {rows_written} rows to {OUT_CSV}")
+    print(f"Done.")
+    print(f"\nSaved {rows_written} rows to {OUT_CSV.relative_to(ROOT)}")
 
 if __name__ == "__main__":
     main()

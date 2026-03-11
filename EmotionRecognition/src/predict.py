@@ -63,7 +63,6 @@ def parse_args() -> argparse.Namespace:
     p.add_argument("--top-k", type=int, default=3, help="How many top classes to show")
     return p.parse_args()
 
-
 def main() -> None:
     args = parse_args()
 
